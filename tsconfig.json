@@ -2,7 +2,7 @@
     "compileOnSave": true,
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es2020",
+        "target": "es2019",
         "declaration": true,
         "noImplicitAny": false,
         "rootDirs": ["src", "node_modules"],

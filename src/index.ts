@@ -12,7 +12,7 @@ enum COMPLETE_RESULT {
     ERROR = 'Failed'
 }
 
-type LoggerOptions = {
+export type LoggerOptions = {
     level?: number,
     showDate?: boolean,
     dateFormat?: string,

@@ -45,6 +45,8 @@ export class AzurePipelineReporter implements ConsolaReporter {
             return (params: TemplateParams) => `##[group]${params.message}`;
         case MESSAGE_TYPES.GROUP_END:
             return () => '##[endgroup]';
+        case MESSAGE_TYPES.RUN_COMMAND:
+            return (params: TemplateParams) => `##[command]${params.message}`;
         case MESSAGE_TYPES.DEBUG:
             return (params: TemplateParams) => `##[debug]${params.message}`;
         case MESSAGE_TYPES.WARNING:
@@ -54,7 +56,7 @@ export class AzurePipelineReporter implements ConsolaReporter {
         case MESSAGE_TYPES.SECTION:
             return (params: TemplateParams) => `##[section]${params.message}`;
         case MESSAGE_TYPES.COMPLETE:
-            return (params: TemplateParams) => `##vso[task.complete result=${params.result};]${params.message}`; 
+            return (params: TemplateParams) => `##vso[task.complete result=${params.result};]${params.message}`;
         case MESSAGE_TYPES.LOG_ISSUE:
             return (params: TemplateParams) => `##vso[task.logissue type=${params.type};]${params.message}`;
         default:
