@@ -1,5 +1,6 @@
 .history
 .eslintrc.js
+jest.config.js
 
 build
 coverage

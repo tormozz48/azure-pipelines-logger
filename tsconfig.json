@@ -4,15 +4,17 @@
         "module": "commonjs",
         "target": "es2019",
         "declaration": true,
-        "noImplicitAny": false,
         "rootDirs": ["src", "node_modules"],
         "typeRoots": ["node_modules/@types"],
         "sourceMap": false,
         "rootDir": "src",
         "outDir": "build",
-        "incremental": false
+        "incremental": false,
+        "allowUnreachableCode": false,
+        "noFallthroughCasesInSwitch": true,
+        "strictBindCallApply": true
     },
     "allowSyntheticDefaultImport": true,
     "include": ["src/*.ts"],
-    "exclude": ["node_modules"],
+    "exclude": ["node_modules"]
 }

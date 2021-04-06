@@ -2,5 +2,10 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    setupFilesAfterEnv: ['jest-sinon']
+    setupFilesAfterEnv: ['jest-sinon'],
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.ts',
+        '!src/**/*.spec.ts'
+    ]
 };

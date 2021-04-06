@@ -1,9 +1,9 @@
-import * as dateFormat from 'dateformat';
 import { ConsolaLogObject, ConsolaReporter } from 'consola';
+import * as dateFormat from 'dateformat';
 
 type TemplateParams = {message?: string, result?: string, type?: string};
 
-type ReporterOptions = {showDate: boolean, dateFormat: string};
+type ReporterOptions = {showDate?: boolean, dateFormat?: string};
 
 export enum MESSAGE_TYPES {
     GROUP_BEGIN = 'begin_group',
@@ -26,7 +26,7 @@ export class AzurePipelineReporter implements ConsolaReporter {
 
     public log(logObject: ConsolaLogObject): void {
         const message = this.options.showDate
-            ? `${dateFormat(logObject.date, this.options.dateFormat)} ${logObject.args[0]}`
+            ? `${dateFormat(logObject.date, this.options.dateFormat)} ${logObject.args[0] as string}`
             : logObject.args[0];
 
         const {templateId, ...messageArgs} = logObject.args[1];
@@ -43,22 +43,31 @@ export class AzurePipelineReporter implements ConsolaReporter {
         switch (templateId) {
         case MESSAGE_TYPES.GROUP_BEGIN:
             return (params: TemplateParams) => `##[group]${params.message}`;
+
         case MESSAGE_TYPES.GROUP_END:
             return () => '##[endgroup]';
+
         case MESSAGE_TYPES.RUN_COMMAND:
             return (params: TemplateParams) => `##[command]${params.message}`;
+
         case MESSAGE_TYPES.DEBUG:
             return (params: TemplateParams) => `##[debug]${params.message}`;
+
         case MESSAGE_TYPES.WARNING:
             return (params: TemplateParams) => `##[warning]${params.message}`;
+
         case MESSAGE_TYPES.ERROR:
             return (params: TemplateParams) => `##[error]${params.message}`;
+
         case MESSAGE_TYPES.SECTION:
             return (params: TemplateParams) => `##[section]${params.message}`;
+
         case MESSAGE_TYPES.COMPLETE:
             return (params: TemplateParams) => `##vso[task.complete result=${params.result};]${params.message}`;
+
         case MESSAGE_TYPES.LOG_ISSUE:
             return (params: TemplateParams) => `##vso[task.logissue type=${params.type};]${params.message}`;
+
         default:
             throw new Error('Unknown template identifier');
         }

@@ -1,11 +1,14 @@
 module.exports = {
     'env': {
-        'browser': true,
         'es2021': true
     },
     'extends': [
         'eslint:recommended',
-        'plugin:@typescript-eslint/recommended'
+        'auto',
+        'prettier',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:jest/recommended',
+        'plugin:chai-expect/recommended'
     ],
     'parser': '@typescript-eslint/parser',
     'parserOptions': {
@@ -13,7 +16,8 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        '@typescript-eslint'
+        '@typescript-eslint',
+        'jest'
     ],
     'rules': {
         'indent': [
@@ -31,6 +35,10 @@ module.exports = {
         'semi': [
             'error',
             'always'
-        ]
+        ],
+        'class-methods-use-this': 0,
+        'jest/valid-expect': 0,
+        '@typescript-eslint/no-unsafe-assignment': 0,
+        '@typescript-eslint/no-unused-expressions': 0
     }
 };

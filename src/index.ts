@@ -1,4 +1,5 @@
 import {Consola} from 'consola';
+
 import {AzurePipelineReporter, MESSAGE_TYPES} from './azure-pipeline-reporter';
 
 enum LOG_ISSUE_TYPES {
@@ -21,6 +22,7 @@ export type LoggerOptions = {
 
 export class Logger {
     private readonly logger: Consola;
+
     private readonly options: LoggerOptions = {
         level: 4,
         showDate: false,
@@ -29,7 +31,7 @@ export class Logger {
     }
 
     constructor(options: LoggerOptions = {}) {
-        this.options = Object.assign({}, this.options, options);
+        this.options = { ...this.options, ...options};
 
         this.logger = new Consola({
             level: this.options.level,
@@ -43,7 +45,8 @@ export class Logger {
 
         if (this.options.mock) {
             // eslint-disable-next-line @typescript-eslint/no-empty-function
-            this.logger.mockTypes(() => (() => {}));
+            const noop = (): void => {};
+            this.logger.mockTypes(() => noop);
         }
     }
 

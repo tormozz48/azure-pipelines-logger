@@ -1,5 +1,7 @@
 import 'jest-sinon';
+
 import * as sinon from 'sinon';
+
 import { Logger } from '.';
 
 describe('azure-pipelines-logger', () => {
@@ -18,7 +20,7 @@ describe('azure-pipelines-logger', () => {
     });
 
     describe('beginGroup', () => {
-        test('should log message which opens group ', () => {
+        test('should log message which opens group', () => {
             (new Logger()).beginGroup('Some Group');
 
             expect(outSpy.firstCall.args[0]).toEqual('##[group]Some Group\n');
@@ -27,7 +29,7 @@ describe('azure-pipelines-logger', () => {
 
 
     describe('endGroup', () => {
-        test('should log message which closes group ', () => {
+        test('should log message which closes group', () => {
             (new Logger()).endGroup();
 
             expect(outSpy.firstCall.args[0]).toEqual('##[endgroup]\n');
@@ -60,7 +62,7 @@ describe('azure-pipelines-logger', () => {
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).debug('Hello World');
 
-            expect(outSpy).not.toBeCalled;
+            expect(outSpy).not.toHaveBeenCalled();
         });
     });
 
@@ -74,7 +76,7 @@ describe('azure-pipelines-logger', () => {
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).info('Hello World');
 
-            expect(outSpy).not.toBeCalled;
+            expect(outSpy).not.toHaveBeenCalled();
         });
     });
 
@@ -88,7 +90,7 @@ describe('azure-pipelines-logger', () => {
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).warn('Some Warning');
 
-            expect(outSpy).not.toBeCalled;
+            expect(outSpy).not.toHaveBeenCalled();
         });
     });
 
@@ -102,7 +104,7 @@ describe('azure-pipelines-logger', () => {
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).error('Some Error');
 
-            expect(outSpy).not.toBeCalled;
+            expect(outSpy).not.toHaveBeenCalled();
         });
     });
 
