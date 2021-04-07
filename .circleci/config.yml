@@ -1,0 +1,29 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: '12.19'
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+      - run:
+          name: Build TypeScript
+          command: npm run build
+      - run:
+          name: Check code syntax
+          command: npm run lint
+      - run:
+          name: Run tests
+          command: npm test -- --ci --runInBand --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit
