@@ -9,9 +9,9 @@ jobs:
       tag: '12.19'
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
+      - run:
+          name: Install dependencies
+          command: npm install
       - run:
           name: Build TypeScript
           command: npm run build
