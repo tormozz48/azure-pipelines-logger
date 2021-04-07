@@ -25,3 +25,8 @@ jobs:
       run: npm run lint
     - name: Run tests
       run: npm test
+    - name: Coveralls Parallel
+      if: ${{ startsWith(matrix.node-version, '12') }}
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
