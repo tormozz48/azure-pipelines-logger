@@ -59,6 +59,12 @@ describe('azure-pipelines-logger', () => {
             expect(outSpy.firstCall.args[0]).toEqual('##[debug]Hello World\n');
         });
 
+        test('should log message with included date', () => {
+            (new Logger({showDate: true})).debug('Hello World');
+
+            expect(outSpy.firstCall.args[0]).toMatch(/##\[debug]\d{2}:\d{2}:\d{2}\sHello\sWorld/);
+        });
+
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).debug('Hello World');
 
@@ -73,6 +79,12 @@ describe('azure-pipelines-logger', () => {
             expect(outSpy.firstCall.args[0]).toEqual('##[debug]Hello World\n');
         });
 
+        test('should log message with included date', () => {
+            (new Logger({showDate: true})).info('Hello World');
+
+            expect(outSpy.firstCall.args[0]).toMatch(/##\[debug]\d{2}:\d{2}:\d{2}\sHello\sWorld/);
+        });
+
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).info('Hello World');
 
@@ -84,13 +96,19 @@ describe('azure-pipelines-logger', () => {
         test('should log warning message', () => {
             (new Logger()).warn('Some Warning');
 
-            expect(outSpy.firstCall.args[0]).toEqual('##[warning]Some Warning\n');
+            expect(errSpy.firstCall.args[0]).toEqual('##[warning]Some Warning\n');
+        });
+
+        test('should log message with included date', () => {
+            (new Logger({showDate: true})).warn('Some Warning');
+
+            expect(errSpy.firstCall.args[0]).toMatch(/##\[warning]\d{2}:\d{2}:\d{2}\sSome\sWarning/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).warn('Some Warning');
 
-            expect(outSpy).not.toHaveBeenCalled();
+            expect(errSpy).not.toHaveBeenCalled();
         });
     });
 
@@ -98,13 +116,19 @@ describe('azure-pipelines-logger', () => {
         test('should log warning message', () => {
             (new Logger()).error('Some Error');
 
-            expect(outSpy.firstCall.args[0]).toEqual('##[error]Some Error\n');
+            expect(errSpy.firstCall.args[0]).toEqual('##[error]Some Error\n');
+        });
+
+        test('should log message with included date', () => {
+            (new Logger({showDate: true})).error('Some Error');
+
+            expect(errSpy.firstCall.args[0]).toMatch(/##\[error]\d{2}:\d{2}:\d{2}\sSome\sError/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
             (new Logger({mock: true})).error('Some Error');
 
-            expect(outSpy).not.toHaveBeenCalled();
+            expect(errSpy).not.toHaveBeenCalled();
         });
     });
 

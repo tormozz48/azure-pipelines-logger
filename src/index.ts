@@ -149,7 +149,7 @@ export class Logger {
      * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
      */
     public warn(message: string): void {
-        this.logger.debug(message, {templateId: MESSAGE_TYPES.WARNING});
+        this.logger.warn(message, {templateId: MESSAGE_TYPES.WARNING});
     }
 
     /**
@@ -160,7 +160,7 @@ export class Logger {
      * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
      */
     public error(message: string): void {
-        this.logger.debug(message, {templateId: MESSAGE_TYPES.ERROR});
+        this.logger.error(message, {templateId: MESSAGE_TYPES.ERROR});
     }
 
     /**
