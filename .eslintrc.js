@@ -39,6 +39,6 @@ module.exports = {
         'class-methods-use-this': 0,
         'jest/valid-expect': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
-        '@typescript-eslint/no-unused-expressions': 0
+        '@typescript-eslint/no-unused-expressions': 0,
     }
 };
