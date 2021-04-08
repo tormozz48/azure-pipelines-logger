@@ -3,6 +3,7 @@
 jest.config.js
 
 build
+docs
 examples
 coverage
 README.md
