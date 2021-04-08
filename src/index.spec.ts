@@ -7,8 +7,8 @@ import { Logger } from '.';
 describe('azure-pipelines-logger', () => {
     const sandbox: sinon.SinonSandbox = sinon.createSandbox({});
 
-    let outSpy: sinon.SinonSpy;
-    let errSpy: sinon.SinonSpy;
+    let outSpy: sinon.SinonSpy = null;
+    let errSpy: sinon.SinonSpy = null;
 
     beforeEach(() => {
         outSpy = sandbox.spy(process.stdout, 'write');
@@ -60,13 +60,13 @@ describe('azure-pipelines-logger', () => {
         });
 
         test('should log message with included date', () => {
-            (new Logger({showDate: true})).debug('Hello World');
+            (new Logger({ showDate: true })).debug('Hello World');
 
             expect(outSpy.firstCall.args[0]).toMatch(/##\[debug]\d{2}:\d{2}:\d{2}\sHello\sWorld/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
-            (new Logger({mock: true})).debug('Hello World');
+            (new Logger({ mock: true })).debug('Hello World');
 
             expect(outSpy).not.toHaveBeenCalled();
         });
@@ -80,13 +80,13 @@ describe('azure-pipelines-logger', () => {
         });
 
         test('should log message with included date', () => {
-            (new Logger({showDate: true})).info('Hello World');
+            (new Logger({ showDate: true })).info('Hello World');
 
             expect(outSpy.firstCall.args[0]).toMatch(/##\[debug]\d{2}:\d{2}:\d{2}\sHello\sWorld/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
-            (new Logger({mock: true})).info('Hello World');
+            (new Logger({ mock: true })).info('Hello World');
 
             expect(outSpy).not.toHaveBeenCalled();
         });
@@ -100,13 +100,13 @@ describe('azure-pipelines-logger', () => {
         });
 
         test('should log message with included date', () => {
-            (new Logger({showDate: true})).warn('Some Warning');
+            (new Logger({ showDate: true })).warn('Some Warning');
 
             expect(errSpy.firstCall.args[0]).toMatch(/##\[warning]\d{2}:\d{2}:\d{2}\sSome\sWarning/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
-            (new Logger({mock: true})).warn('Some Warning');
+            (new Logger({ mock: true })).warn('Some Warning');
 
             expect(errSpy).not.toHaveBeenCalled();
         });
@@ -120,13 +120,13 @@ describe('azure-pipelines-logger', () => {
         });
 
         test('should log message with included date', () => {
-            (new Logger({showDate: true})).error('Some Error');
+            (new Logger({ showDate: true })).error('Some Error');
 
             expect(errSpy.firstCall.args[0]).toMatch(/##\[error]\d{2}:\d{2}:\d{2}\sSome\sError/);
         });
 
         test('should not log message if "mock mode" enabled', () => {
-            (new Logger({mock: true})).error('Some Error');
+            (new Logger({ mock: true })).error('Some Error');
 
             expect(errSpy).not.toHaveBeenCalled();
         });

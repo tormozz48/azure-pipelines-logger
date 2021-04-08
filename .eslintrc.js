@@ -4,8 +4,7 @@ module.exports = {
     },
     'extends': [
         'eslint:recommended',
-        'auto',
-        'prettier',
+        'strict/es6',
         'plugin:@typescript-eslint/recommended',
         'plugin:jest/recommended',
         'plugin:chai-expect/recommended'
@@ -20,22 +19,10 @@ module.exports = {
         'jest'
     ],
     'rules': {
-        'indent': [
-            'error',
-            4
-        ],
-        'linebreak-style': [
-            'error',
-            'unix'
-        ],
-        'quotes': [
-            'error',
-            'single'
-        ],
-        'semi': [
-            'error',
-            'always'
-        ],
+        'indent': ['error', 4],
+        'linebreak-style': ['error', 'unix'],
+        'quotes': ['error', 'single'],
+        'semi': ['error', 'always'],
         'class-methods-use-this': 0,
         'jest/valid-expect': 0,
         '@typescript-eslint/no-unsafe-assignment': 0,
