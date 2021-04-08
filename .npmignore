@@ -2,4 +2,6 @@
 src
 coverage
 docs
+examples
 jest.config.js
+azure-pipelines.yml

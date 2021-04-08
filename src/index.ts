@@ -41,6 +41,11 @@ export type LoggerOptions = {
     mock?: boolean
 }
 
+/**
+ * Logger class
+ * @export
+ * @class Logger
+ */
 export class Logger {
     private readonly logger: Consola;
 
@@ -76,6 +81,7 @@ export class Logger {
      * @param  {string} message
      * @return {void}
      * @memberof Logger
+     * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
      */
     public beginGroup(message: string): void {
         this.logger.info(message, {templateId: MESSAGE_TYPES.GROUP_BEGIN});
@@ -85,15 +91,30 @@ export class Logger {
      * Ends group of messages
      * @return {void}
      * @memberof Logger
+     * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
      */
     public endGroup(): void {
         this.logger.info(null, {templateId: MESSAGE_TYPES.GROUP_END});
     }
 
+    /**
+     * Creates message formatted as start of section
+     * @param  {string} message
+     * @return {void}
+     * @memberof Logger
+     * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
+     */
     public startSection(message: string): void {
         this.logger.info(message, {templateId: MESSAGE_TYPES.SECTION});
     }
 
+    /**
+     * Creates message formatted as running command
+     * @param  {string} message
+     * @return {void}
+     * @memberof Logger
+     * @see https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#formatting-commands
+     */
     public runCommand(message: string): void {
         this.logger.info(message, {templateId: MESSAGE_TYPES.RUN_COMMAND});
     }

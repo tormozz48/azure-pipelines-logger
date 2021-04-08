@@ -3,4 +3,5 @@
 jest.config.js
 
 build
+examples
 coverage
