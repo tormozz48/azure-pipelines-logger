@@ -14,7 +14,13 @@ enum COMPLETE_RESULT {
 }
 
 export type LoggerOptions = {
+    /**
+     * Log level
+     * @default 4 (debug)
+     * @type number
+     */
     level?: number,
+
     /**
      * Show date inside log message
      * @type boolean
@@ -23,9 +29,15 @@ export type LoggerOptions = {
 
     /**
      * Date format
+     * @default 'isoTime'
      * @type string
      */
     dateFormat?: string,
+
+    /**
+     * Mocks all loggers calls. Can be used in tests
+     * @type boolean
+     */
     mock?: boolean
 }
 
