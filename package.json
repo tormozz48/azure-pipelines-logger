@@ -1,6 +1,6 @@
 {
   "name": "@tormozz48/azure-pipelines-logger",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Useful logger for scripts which run in azure pipelines",
   "main": "build/index",
   "types": "build/index.d.ts",
