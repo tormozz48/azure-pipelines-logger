@@ -2,10 +2,13 @@
 
 Useful logger for scripts which runs in azure pipelines. Allows to use internal pipeline formatters for log messages.
 
+![npm](https://img.shields.io/npm/v/@tormozz48/azure-pipelines-logger)
 [![Node.js CI](https://github.com/tormozz48/azure-pipelines-logger/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/tormozz48/azure-pipelines-logger/actions/workflows/build-and-test.yml)
 [![CircleCI](https://circleci.com/gh/tormozz48/azure-pipelines-logger.svg?style=shield)](https://circleci.com/gh/tormozz48/azure-pipelines-logger)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Coverage Status](https://coveralls.io/repos/github/tormozz48/azure-pipelines-logger/badge.svg?branch=main)](https://coveralls.io/github/tormozz48/azure-pipelines-logger?branch=main)
+![GitHub](https://img.shields.io/github/license/tormozz48/azure-pipelines-logger)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Install and Usage
 
